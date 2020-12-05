@@ -6,6 +6,8 @@ cc_binary(
         "@com_google_googleapis//google/bigtable/v2:bigtable_cc_grpc",
         "@com_google_googleapis//google/bigtable/v2:bigtable_cc_proto",
     ],
+    linkopts = ["-l:libstdc++.a"],
+    features = ["fully_static_link"],
 )
 
 load("@io_bazel_rules_docker//cc:image.bzl", "cc_image")
