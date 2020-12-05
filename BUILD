@@ -7,3 +7,10 @@ cc_binary(
         "@com_google_googleapis//google/bigtable/v2:bigtable_cc_proto",
     ],
 )
+
+load("@io_bazel_rules_docker//cc:image.bzl", "cc_image")
+
+cc_image(
+    name = "grpc_3pi_sample_image",
+    binary = ":grpc_3pi_sample",
+)
