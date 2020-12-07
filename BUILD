@@ -1,5 +1,5 @@
 cc_binary(
-    name = "grpc_3pi_sample",
+    name = "main",
     srcs = ["main.cc"],
     deps = [
         "@com_github_grpc_grpc//:grpc++",
@@ -13,6 +13,21 @@ cc_binary(
 load("@io_bazel_rules_docker//cc:image.bzl", "cc_image")
 
 cc_image(
-    name = "grpc_3pi_sample_image",
-    binary = ":grpc_3pi_sample",
+    name = "image",
+    binary = ":main",
+)
+
+load(
+    "@io_bazel_rules_docker//container:container.bzl",
+    "container_pull",
+    "container_push",
+)
+
+container_push(
+   name = "push",
+   image = ":image",
+   format = "Docker",
+   registry = "gcr.io",
+   repository = "everythingisawesome8-6d551/grpc-app",
+   tag = "v1",
 )
