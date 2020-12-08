@@ -8,7 +8,7 @@ using grpc::Channel;
 using grpc::ClientContext;
 using grpc::Status;
 
-#define TABLE_NAME "projects/cicpclientproj/instances/grpc-3pi-test/tables/grpc-table"
+#define TABLE_NAME "projects/everythingisawesome8-6d551/instances/grpc-3pi-test/tables/grpc-table"
 #define ROW_KEY "row_key_1"
 #define FAMILY_NAME "cf1"
 #define COLUMN_QUALIFIER "column_qualifier"
@@ -36,6 +36,10 @@ int main(int argc, char** argv) {
               << std::endl;
   } else {
     std::cout << "Stored successfully!" << std::endl;
+  }
+  while (true)
+  {
+    /* code */
   }
   return 0;
 }
