@@ -31,5 +31,5 @@ container_push(
    format = "Docker",
    registry = "gcr.io",
    repository = "everythingisawesome8-6d551/grpc-3pi",
-   tag = "v8",
+   tag = "v9",
 )
