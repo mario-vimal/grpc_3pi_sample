@@ -8,28 +8,5 @@ cc_binary(
         "@com_google_absl//absl/flags:flag",
         "@com_google_absl//absl/flags:parse",
     ],
-    linkopts = ["-l:libstdc++.a"],
     features = ["fully_static_link"],
-)
-
-load("@io_bazel_rules_docker//cc:image.bzl", "cc_image")
-
-cc_image(
-    name = "image",
-    binary = ":grpc_3pi_sample",
-)
-
-load(
-    "@io_bazel_rules_docker//container:container.bzl",
-    "container_pull",
-    "container_push",
-)
-
-container_push(
-   name = "push",
-   image = ":image",
-   format = "Docker",
-   registry = "gcr.io",
-   repository = "everythingisawesome8-6d551/grpc-3pi",
-   tag = "v9",
 )

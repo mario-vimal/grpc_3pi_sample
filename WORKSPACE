@@ -27,8 +27,8 @@ git_repository(
 
 git_repository(
     name = "com_github_grpc_grpc",
-    remote = "https://github.com/renkelvin/grpc.git",
-    branch = "sample",
+    remote = "https://github.com/grpc/grpc.git",
+    branch = "main",
 )
 
 load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
@@ -52,23 +52,3 @@ http_archive(
   urls = ["https://github.com/abseil/abseil-cpp/archive/98eb410c93ad059f9bba1bf43f5bb916fc92a5ea.zip"],
   strip_prefix = "abseil-cpp-98eb410c93ad059f9bba1bf43f5bb916fc92a5ea",
 )
-
-http_archive(
-    name = "io_bazel_rules_docker",
-    sha256 = "1698624e878b0607052ae6131aa216d45ebb63871ec497f26c67455b34119c80",
-    strip_prefix = "rules_docker-0.15.0",
-    urls = ["https://github.com/bazelbuild/rules_docker/releases/download/v0.15.0/rules_docker-v0.15.0.tar.gz"],
-)
-
-load(
-    "@io_bazel_rules_docker//repositories:repositories.bzl",
-    container_repositories = "repositories",
-)
-container_repositories()
-
-load(
-    "@io_bazel_rules_docker//cc:image.bzl",
-    _cc_image_repos = "repositories",
-)
-
-_cc_image_repos()
