@@ -31,6 +31,11 @@ git_repository(
     branch = "master",
 )
 
+# local_repository(
+#     name = "com_github_grpc_grpc",
+#     path = "/Users/chuanr/Code/renkelvin/grpc",
+# )
+
 load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
 
 grpc_deps()
