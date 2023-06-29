@@ -12,10 +12,17 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 #     ],
 # )
 
-git_repository(
-    name = "com_google_googleapis",
-    remote = "https://github.com/googleapis/googleapis.git",
-    branch = "master",
+# git_repository(
+#     name = "com_google_googleapis",
+#     remote = "https://github.com/googleapis/googleapis.git",
+#     branch = "master",
+# )
+
+http_archive(
+    name = "google_cloud_cpp",
+    sha256 = "8cda870803925c62de8716a765e03eb9d34249977e5cdb7d0d20367e997a55e2",
+    strip_prefix = "google-cloud-cpp-2.12.0",
+    url = "https://github.com/googleapis/google-cloud-cpp/archive/v2.12.0.tar.gz",
 )
 
 # http_archive(
@@ -25,16 +32,20 @@ git_repository(
 #     urls = ["https://github.com/grpc/grpc/archive/v1.33.1.zip"],
 # )
 
-git_repository(
+# git_repository(
+#     name = "com_github_grpc_grpc",
+#     remote = "https://github.com/grpc/grpc.git",
+#     branch = "master",
+# )
+
+local_repository(
     name = "com_github_grpc_grpc",
-    remote = "https://github.com/grpc/grpc.git",
-    branch = "master",
+    path = "../grpc",
 )
 
-# local_repository(
-#     name = "com_github_grpc_grpc",
-#     path = "/Users/chuanr/Code/renkelvin/grpc",
-# )
+load("@google_cloud_cpp//bazel:google_cloud_cpp_deps.bzl", "google_cloud_cpp_deps")
+
+google_cloud_cpp_deps()
 
 load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
 
